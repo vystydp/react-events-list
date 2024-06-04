@@ -5,7 +5,7 @@ interface EventDetailsProps {
 }
 
 /* eslint react/prop-types: 0 */
-const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
+const EventDetails = ({ event } : EventDetailsProps) => {
   if (!event) {
     return <div className="">Select an event to see the details</div>;
   }
