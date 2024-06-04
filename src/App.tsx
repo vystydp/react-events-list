@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import EventForm from './components/EventForm';
 import EventList from './components/EventList';
@@ -21,7 +20,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
       </header>
       <div className="">
         <div>
