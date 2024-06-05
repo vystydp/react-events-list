@@ -9,6 +9,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     d) CSS is very poor as I spent a lot time working on BE
     e) Code base is not 100% covered by UT (~90% coverage)
     f) Missing E2E tests
+    g) EventList component should have some kind of memoization (useMemo) even if it's not so expensive looping
+
+## ToDo
+     1) Memoize
+     2) Remove pooling + Add websocket and move to Heroku cloud
+     3) CSS Polishing
+     4) Explore weahter API to get forecast by location and time, possibly we can get the whole forecast and find the right value for each event
 
 ## Available Scripts
 
