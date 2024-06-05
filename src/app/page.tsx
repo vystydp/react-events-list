@@ -1,29 +1,15 @@
-import axios from 'axios';
 import ClientWrapper from '../components/ClientWrapper';
 import { Event } from '../types/event'
 
-export async function generateStaticParams() {
-  return [];
-}
-
-const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
-    return `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
-  } else {
-    return `${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
-  }
-};
-
 async function fetchEvents(): Promise<Event[]> {
-  var url = 'http://react-events-list.vercel.app/api/events';
-  console.log('Fetching events from: '+ url); // Debug log
-  const res = await axios.get(url);
-  if (!res.data) {
+  var url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/events`;
+  console.log(`Fetching events from: ${url}`); // Debug log
+  const res = await fetch(url);
+  if (!res.ok) {
     throw new Error(`Failed to fetch events from ${url}: ${res.statusText}`);
   }
   try {
-    console.log(`RES DATA${res.data}`)
-    return res.data;
+    return await res.json();
   } catch (error) {
     throw new Error(`Failed to parse JSON from ${url}: ${error.message}`);
   }
