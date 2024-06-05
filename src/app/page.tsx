@@ -1,3 +1,4 @@
+import axios from 'axios';
 import ClientWrapper from '../components/ClientWrapper';
 import { Event } from '../types/event'
 
@@ -16,12 +17,13 @@ const getBaseUrl = () => {
 async function fetchEvents(): Promise<Event[]> {
   var url = `${getBaseUrl()}/api/events`;
   console.log(`Fetching events from: ${url}`); // Debug log
-  const res = await fetch(url);
-  if (!res.ok) {
+  const res = await axios.get(url);
+  if (!res.data) {
     throw new Error(`Failed to fetch events from ${url}: ${res.statusText}`);
   }
   try {
-    return await res.json();
+    console.log(`RES DATA${res.data}`)
+    return res.data;
   } catch (error) {
     throw new Error(`Failed to parse JSON from ${url}: ${error.message}`);
   }
