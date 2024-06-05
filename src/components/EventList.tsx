@@ -8,7 +8,7 @@ const EventList = ({ initialEvents, onSelectEvent }: { initialEvents: Event[], o
   const [events, setEvents] = useState<Event[]>(initialEvents);
 
   const fetchEvents = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/events`);
+    const response = await axios.get('/api/events');
     setEvents(response.data);
   };
 

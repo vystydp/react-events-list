@@ -12,7 +12,6 @@ const EventDetails = ({ event }: { event: Event }) => {
       if(!event?.location?.lat) {
         return false;
       }
-      console.log(process);
       const response = await axios.get(`${process.env.NEXT_PUBLIC_WEATHER_API_URL}?lat=${event.location.lat}&lon=${event.location.long}`);
       setWeather(response.data);
     };

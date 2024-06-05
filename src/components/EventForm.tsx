@@ -12,7 +12,7 @@ const EventForm = ({ onEventCreated }: { onEventCreated: () => void }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/events`, { title, date, description, long, lat });
+    await axios.post('/api/events', { title, date, description, long, lat });
     setTitle('');
     setDate('');
     setDescription('');
