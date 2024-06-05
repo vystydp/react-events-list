@@ -11,6 +11,10 @@ const mockEvent = {
   title: 'Event 1',
   date: '2023-06-04',
   description: 'Description 1',
+  location: {
+    lat: 10,
+    long: 10
+  }
 };
 
 const mockWeather = {
@@ -41,7 +45,6 @@ test('renders event details with weather information', async () => {
   expect(screen.getByText('Event 1')).toBeInTheDocument();
   expect(screen.getByText('6/4/2023')).toBeInTheDocument();
   expect(screen.getByText('Description 1')).toBeInTheDocument();
-  // Wait for weather data to be fetched and rendered
   const temperatureElement = await screen.findByText(/Temperature: 25°C/i);
   expect(temperatureElement).toBeInTheDocument();
 });

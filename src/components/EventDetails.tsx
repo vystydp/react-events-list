@@ -20,9 +20,11 @@ const EventDetails = ({ event }: { event: Event }) => {
   }, [event]);
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold">{event.title}</h2>
-      <p>{new Date(event.date).toLocaleDateString()}</p>
+    <div className='container'>
+      <h2 className="text-2xl font-bold mb-3.5">{event.title}</h2>
+      <div className={'box-border h-42 w-42 p-4 border-1 shadow-lg' + (new Date(event.date).getTime() < new Date().getTime() ? ' previous' : ' upcomming')}
+               key={event.id} >
+                  <p>{new Date(event.date).toLocaleDateString()}</p>
       <p>{event.description}</p>
       {weather && (
         <div>
@@ -30,6 +32,7 @@ const EventDetails = ({ event }: { event: Event }) => {
           <p>Temperature: {weather?.properties?.timeseries[0].data.instant.details.air_temperature}°C</p>
         </div>
       )}
+          </div>
     </div>
   );
 };

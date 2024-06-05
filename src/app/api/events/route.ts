@@ -13,6 +13,7 @@ let events: Event[] = [{
 }];
 
 export async function GET() {
+  events.sort((a: Event, b: Event) => new Date(a.date) > new Date(b.date) ? 1 : -1);
   return NextResponse.json(events);
 }
 
