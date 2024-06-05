@@ -6,7 +6,7 @@ export async function generateStaticParams() {
 }
 
 async function fetchEvents(): Promise<Event[]> {
-  var url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/events`;
+  var url = `${process.env.NEXT_PUBLIC_API_BASE_URL}:3000/api/events`;
   console.log(`Fetching events from: ${url}`); // Debug log
   const res = await fetch(url);
   if (!res.ok) {
