@@ -21,7 +21,9 @@ const getBaseUrl = () => {
 async function fetchEvents(): Promise<Event[]> {
   const baseUrl = getBaseUrl();
   console.log(`Fetching events from: ${baseUrl}/api/events`); // Debug log
-  const res = await fetch(`${baseUrl}/api/events`);
+  const res = await fetch(`${baseUrl}/api/events`, {
+    credentials: "same-origin", // include, *same-origin, omit
+  });
   if (!res.ok) {
     throw new Error(`Failed to fetch events from ${baseUrl}/api/events: ${res.statusText}`);
   }
