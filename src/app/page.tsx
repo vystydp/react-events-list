@@ -14,7 +14,7 @@ const getBaseUrl = () => {
   if (process.env.VERCEL_ENV === 'production' || process.env.VERCEL_ENV === 'preview') {
     return `http://${process.env.VERCEL_URL}`;
   } else {
-    return `http://${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
+    return `https://${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
   }
 };
 
@@ -23,6 +23,10 @@ async function fetchEvents(): Promise<Event[]> {
   console.log(`Fetching events from: ${baseUrl}/api/events`); // Debug log
   const res = await fetch(`${baseUrl}/api/events`, {
     credentials: "same-origin", // include, *same-origin, omit
+    mode: 'cors',
+    headers: {
+      'Access-Control-Allow-Origin':'*'
+    }
   });
   if (!res.ok) {
     throw new Error(`Failed to fetch events from ${baseUrl}/api/events: ${res.statusText}`);
