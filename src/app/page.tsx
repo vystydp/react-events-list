@@ -8,8 +8,8 @@ type Event = {
 };
 
 const getBaseUrl = () => {
-  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV)
-  console.log(process.env.NEXT_PUBLIC_VERCEL_URL)
+  console.log(process.env.VERCEL_ENV)
+  console.log(process.env.VERCEL_URL)
   console.log("ssssssssssssssssssssss")
   if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' || process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
     return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
