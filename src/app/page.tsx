@@ -8,9 +8,9 @@ export async function generateStaticParams() {
 
 const getBaseUrl = () => {
   if (process.env.NEXT_PUBLIC_API_BASE_URL) {
-    return `https://${process.env.NEXT_PUBLIC_API_BASE_URL}`;
+    return `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
   } else {
-    return `http://${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
+    return `${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
   }
 };
 
