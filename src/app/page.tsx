@@ -1,7 +1,7 @@
 import ClientWrapper from '../components/ClientWrapper';
 import { Event } from '../types/event'
 
-export default async function Page() {
+export default function Page() {
   console.log('Building Page component'); // Debug log
   let initialEvents: Event[] = [{ 
     id: "1", 
