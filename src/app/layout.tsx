@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
  
+// These styles apply to every route in the application
+import '../styles/globals.css'
+ 
 export const metadata: Metadata = {
-  title: 'React App',
-  description: 'Web site created with Next.js.',
+  title: 'Evento - create events with ❤',
+  description: 'We ❤ creating new events',
 }
  
 export default function RootLayout({
@@ -12,9 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div id="root">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
