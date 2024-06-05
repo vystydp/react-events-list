@@ -8,7 +8,7 @@ type Event = {
 };
 
 const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'production') {
+  if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' || process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
     return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   } else {
     return `http://${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
