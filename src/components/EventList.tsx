@@ -13,7 +13,6 @@ const EventList = ({ initialEvents, onSelectEvent }: { initialEvents: Event[], o
   };
 
   useEffect(() => {
-    fetchEvents();
     const interval = setInterval(fetchEvents, 5000); // Poll every 5 seconds
     return () => clearInterval(interval);
   }, []);
