@@ -1,36 +1,47 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import axios from 'axios';
 import EventDetails from '../components/EventDetails';
 
-const event = { id: -1, title: 'Event 1', date: '2024-06-10', desc: "", weather: {temperature: ""} };
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-test('renders event details and fetches weather', async () => {
-  // Arrange
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve({
-        properties: {
-          timeseries: [{
-            data: {
-              instant: {
-                details: { air_temperature: 15 },
-              },
-              next_1_hours: {
-                summary: { symbol_code: 'cloudy' },
-              },
+const mockEvent = {
+  id: '1',
+  title: 'Event 1',
+  date: '2023-06-04',
+  description: 'Description 1',
+};
+
+const mockWeather = {
+  properties: {
+    timeseries: [
+      {
+        data: {
+          instant: {
+            details: {
+              air_temperature: 25,
             },
-          }],
+          },
         },
-      }),
-    }),
-  ) as jest.Mock;
+      },
+    ],
+  }
+};
 
-  // Act
-  render(<EventDetails event={event} />);
+test('renders event details with weather information', async () => {
+  // ARRANGE
+  mockedAxios.get.mockResolvedValueOnce({ data: mockWeather });
+  
 
-  // Assert
+  // ACT
+  render(<EventDetails event={mockEvent} />);
+
+  // ASSERT
   expect(screen.getByText('Event 1')).toBeInTheDocument();
-  expect(screen.getByText('6/10/2024')).toBeInTheDocument();
-  expect(await screen.findByText(/Temperature: 15°C/)).toBeInTheDocument();
-  expect(screen.getByText(/Weather: cloudy/)).toBeInTheDocument();
+  expect(screen.getByText('6/4/2023')).toBeInTheDocument();
+  expect(screen.getByText('Description 1')).toBeInTheDocument();
+  // Wait for weather data to be fetched and rendered
+  const temperatureElement = await screen.findByText(/Temperature: 25°C/i);
+  expect(temperatureElement).toBeInTheDocument();
 });
