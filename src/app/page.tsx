@@ -15,9 +15,8 @@ const getBaseUrl = () => {
 };
 
 async function fetchEvents(): Promise<Event[]> {
-  var url = `${getBaseUrl()}/api/events`;
-  console.log(`Fetching events from: ${url}`); // Debug log
-  console.log(process.env.NEXT_PUBLIC_API_BASE_URL + "aaaaaaaaaaa");
+  var url = 'https://http://react-events-list.vercel.app/api/events';
+  console.log('Fetching events from: '+ url); // Debug log
   const res = await axios.get(url);
   if (!res.data) {
     throw new Error(`Failed to fetch events from ${url}: ${res.statusText}`);
