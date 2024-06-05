@@ -1,6 +1,10 @@
 import ClientWrapper from '../components/ClientWrapper';
 import { Event } from '../types/event'
 
+export async function generateStaticParams() {
+  return [];
+}
+
 async function fetchEvents(): Promise<Event[]> {
   var url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/events`;
   console.log(`Fetching events from: ${url}`); // Debug log
