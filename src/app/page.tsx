@@ -5,8 +5,16 @@ export async function generateStaticParams() {
   return [];
 }
 
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
+    return `https://${process.env.NEXT_PUBLIC_API_BASE_URL}`;
+  } else {
+    return `http://${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
+  }
+};
+
 async function fetchEvents(): Promise<Event[]> {
-  var url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/events`;
+  var url = `${getBaseUrl()}/api/events`;
   console.log(`Fetching events from: ${url}`); // Debug log
   const res = await fetch(url);
   if (!res.ok) {
