@@ -1,28 +1,33 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import axios from 'axios';
 import EventForm from '../components/EventForm';
 
-describe('EventForm', () => {
-  it('submits the form with correct data', async () => {
-    // Arrange
-    const onAddEvent = jest.fn();
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-    // Act
-    render(<EventForm onAddEvent={onAddEvent} />);
-
-    fireEvent.change(screen.getByTestId('title'), { target: { value: 'New Event' } });
-    fireEvent.change(screen.getByTestId('date'), { target: { value: '2024-06-03' } });
-    fireEvent.change(screen.getByTestId('desc'), { target: { value: 'Event Description' } });
-    
-    fireEvent.click(screen.getByTestId('add-event'));
-    
-    // Assert
-    await screen.findByText('New Event (2024-06-03)');
-    
-    expect(onAddEvent).toHaveBeenCalled();
-    expect(onAddEvent.mock.calls[0][0]).toMatchObject({
-      title: 'New Event',
-      date: '2024-06-03',
-      desc: 'Event Description'
-    });
+test('renders event form and handles submit', async () => {
+  // ARRANGE
+  const handleEventCreated = jest.fn();
+  mockedAxios.post.mockResolvedValueOnce({
+    data: { id: '3', title: 'New Event', date: '2023-06-10', description: 'New Description' },
   });
+  
+
+  // ACT
+  render(<EventForm onEventCreated={handleEventCreated} />);
+  fireEvent.change(screen.getByLabelText(/Title/i), { target: { value: 'New Event' } });
+  fireEvent.change(screen.getByLabelText(/Date/i), { target: { value: '2023-06-10' } });
+  fireEvent.change(screen.getByLabelText(/Description/i), { target: { value: 'New Description' } });
+  fireEvent.click(screen.getByText(/Create Event/i));
+  
+  // ASSERT
+  await screen.findByText(/Create Event/i);
+  await waitFor(() => {
+    expect(screen.getByLabelText(/Title/i)).toBeInTheDocument()
+  })
+  expect(screen.getByLabelText(/Title/i)).toHaveValue('');
+  expect(screen.getByLabelText(/Date/i)).toHaveValue('');
+  expect(screen.getByLabelText(/Description/i)).toHaveValue('');
+  expect(handleEventCreated).toHaveBeenCalled();
 });

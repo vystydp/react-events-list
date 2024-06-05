@@ -1,10 +1,16 @@
 export type Event = {
-    id: number;
+    id: string;
     title: string;
     date: string;
-    desc: string;
-    weather: Weather;
+    description: string;
+    weather?: Weather;
+    location?: Location; 
 };
+
+export type Location = {
+    long: number;
+    lat: number;
+}
 
 export type Weather = {
     temperature: string;
