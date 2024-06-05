@@ -1,12 +1,20 @@
-# Getting Started with Create React App
+# Getting Started with Evento app
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Known issues
+	a) I have used so called mechanizm "heart beat" or "pooling" as there is no way to run socket.io in Vercel cloud  
+        https://vercel.com/guides/do-vercel-serverless-functions-support-websocket-connections
+	b) Missing loading spinner (especially when new event is added)
+    c) Temperature is not related to the event time just location
+    d) CSS is very poor as I spent a lot time working on BE
+    e) Code base is not 100% covered by UT (~90% coverage)
+    f) Missing E2E tests
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm rub dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
