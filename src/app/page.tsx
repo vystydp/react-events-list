@@ -12,9 +12,9 @@ const getBaseUrl = () => {
   console.log(process.env.VERCEL_URL)
   console.log("ssssssssssssssssssssss")
   if (process.env.VERCEL_ENV === 'production' || process.env.VERCEL_ENV === 'preview') {
-    return `http://${process.env.VERCEL_URL}`;
+    return `https://${process.env.VERCEL_URL}`;
   } else {
-    return `https://${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
+    return `http://${process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL}`;
   }
 };
 
