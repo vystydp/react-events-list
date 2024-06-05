@@ -8,8 +8,8 @@ let events: Event[] = [{
   date: "2024-06-05T02:00:40+00:00", 
   description: "Interview" ,
   location: {
-    long: 0,
-    lat: 0
+    long: 10,
+    lat: 10
   }
 }];
 

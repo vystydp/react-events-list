@@ -8,13 +8,13 @@ const EventList = ({ initialEvents, onSelectEvent }: { initialEvents: Event[], o
   const [events, setEvents] = useState<Event[]>(initialEvents);
 
   const fetchEvents = async () => {
-    const response = await axios.get('/api/events');
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/events`);
     setEvents(response.data);
   };
 
   useEffect(() => {
     fetchEvents();
-    const interval = setInterval(fetchEvents, 5000); // Poll every 10 seconds
+    const interval = setInterval(fetchEvents, 5000); // Poll every 5 seconds
     return () => clearInterval(interval);
   }, []);
 

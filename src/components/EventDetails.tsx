@@ -9,11 +9,11 @@ const EventDetails = ({ event }: { event: Event }) => {
 
   useEffect(() => {
     const fetchWeather = async () => {
-      if(!event?.location?.lat || !event?.location?.long) {
-        setWeather({});  
+      if(!event?.location?.lat) {
         return false;
       }
-      const response = await axios.get(`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${event.location.lat}&lon=${event.location.long}`);
+      console.log(process);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_WEATHER_API_URL}?lat=${event.location.lat}&lon=${event.location.long}`);
       setWeather(response.data);
     };
 
