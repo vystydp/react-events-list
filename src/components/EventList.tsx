@@ -22,7 +22,7 @@ const EventList = ({ initialEvents, onSelectEvent }: { initialEvents: Event[], o
     <div>
       <h2 className="text-2xl font-bold">Events</h2>
       <ul>
-        {events.map(event => (
+        {events && events.map(event => (
           <li key={event.id} onClick={() => onSelectEvent(event)} className="cursor-pointer">
             {event.title} - {new Date(event.date).toLocaleDateString()}
           </li>
