@@ -15,7 +15,7 @@ const getBaseUrl = () => {
 };
 
 async function fetchEvents(): Promise<Event[]> {
-  var url = 'https://http://react-events-list.vercel.app/api/events';
+  var url = 'https://react-events-list.vercel.app/api/events';
   console.log('Fetching events from: '+ url); // Debug log
   const res = await axios.get(url);
   if (!res.data) {
