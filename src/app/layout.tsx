@@ -5,7 +5,7 @@ import '../styles/globals.css'
  
 export const metadata: Metadata = {
   title: 'Evento - create events with ❤',
-  description: 'We ❤ creating new events',
+  description: 'We bring events into life',
 }
  
 export default function RootLayout({

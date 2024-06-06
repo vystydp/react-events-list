@@ -4,7 +4,7 @@ import { Event } from '../../../types/event'
 let events: Event[] = [{ 
   id: "1", 
   title: "Interview with Slido / Panaxeo", 
-  date: "2024-06-05T02:00:40+00:00", 
+  date: "2024-06-06T14:05:00+02:00", 
   description: "Interview" ,
   location: {
     long: 10,

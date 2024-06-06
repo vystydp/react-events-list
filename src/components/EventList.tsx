@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import { Event } from '../types/event'
 
@@ -19,17 +19,30 @@ const EventList = ({ initialEvents, onSelectEvent }: { initialEvents: Event[], o
   }, []);
 
   return (
-    <div className='container'>
-      <h2 className="text-2xl font-bold mb-3.5">Events</h2>
-        {Array.isArray(events) && events.map(event => (
-          <div className={'box-border h-42 w-42 p-4 border-1 shadow-lg' + (new Date(event.date).getTime() < new Date().getTime() ? ' previous' : ' upcomming')}
-               key={event.id} >
-            <div onClick={() => onSelectEvent(event)} className="cursor-pointer">
-              {event.title} - {new Date(event.date).toLocaleDateString()}
+    <Fragment>
+      <h2 className="text-2xl font-bold mb-4">Events</h2>
+      <div className="bg-white shadow rounded-lg p-4">
+        <div className="grid grid-cols-4 gap-4">
+          {events.map((event) => (
+            <div
+              key={event.id}
+              onClick={() => onSelectEvent(event)}
+              className={
+                "p-4 rounded-lg cursor-pointer hover:bg-gray-100 transition" +
+                (new Date(event.date).getTime() < new Date().getTime()
+                  ? " passed"
+                  : " upcomming")
+              }
+            >
+              <div className="text-xl font-semibold">{event.title}</div>
+              <div className="text-gray-500">
+                {new Date(event.date).toLocaleDateString()}
+              </div>
             </div>
-          </div>
-        ))}
-    </div>
+          ))}
+        </div>
+      </div>
+    </Fragment>
   );
 };
 
