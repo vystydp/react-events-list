@@ -2,7 +2,6 @@
 `npm install && npm build && npm dev`
 
 ## Known issues
-    a) There is no queueing mechanizm on backend implemented yet
     b) Missing loading spinner (especially when new event is added)
     c) Temperature is not related to the event time just location
     d) CSS is very poor as I spent a lot time working on BE
