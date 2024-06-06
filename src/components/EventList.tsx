@@ -34,6 +34,7 @@ const EventList = ({ initialEvents, onSelectEvent }: { initialEvents: Event[], o
                   : " upcomming")
               }
             >
+              <button onClick={(e) => deleteEvent(event.id)} className="float-right pl-1.5 text-red-600">X</button>
               <div className="text-xl font-semibold">{event.title}</div>
               <div className="text-gray-500">
                 {new Date(event.date).toLocaleDateString()}
