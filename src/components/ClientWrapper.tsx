@@ -28,7 +28,7 @@ const ClientWrapper = ({ initialEvents }: { initialEvents: Event[] }) => {
               </div>
           </div>
         </div>
-  </div>
+    </div>
   );
 };
 

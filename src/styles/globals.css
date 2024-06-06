@@ -32,8 +32,16 @@
     color: #61dafb;
   }
 
-  .previous {
+  .passed {
     background-color: #eee;
+  }
+
+  .upcomming {
+    background-color: #ADD8E6
+  }
+
+  .passed::before {
+    content: '\2714'; /* Check mark */
   }
   
   @keyframes App-logo-spin {

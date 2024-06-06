@@ -23,15 +23,22 @@ const EventList = ({ initialEvents, onSelectEvent }: { initialEvents: Event[], o
       <h2 className="text-2xl font-bold mb-4">Events</h2>
       <div className="bg-white shadow rounded-lg p-4">
         <div className="grid grid-cols-4 gap-4">
-          {events.map(event => (
-              <div
-                key={event.id}
-                onClick={() => onSelectEvent(event)}
-                className="p-4 rounded-lg cursor-pointer hover:bg-gray-100 transition"
-              >
-                <div className="text-xl font-semibold">{event.title}</div>
-                <div className="text-gray-500">{new Date(event.date).toLocaleDateString()}</div>
+          {events.map((event) => (
+            <div
+              key={event.id}
+              onClick={() => onSelectEvent(event)}
+              className={
+                "p-4 rounded-lg cursor-pointer hover:bg-gray-100 transition" +
+                (new Date(event.date).getTime() < new Date().getTime()
+                  ? " passed"
+                  : " upcomming")
+              }
+            >
+              <div className="text-xl font-semibold">{event.title}</div>
+              <div className="text-gray-500">
+                {new Date(event.date).toLocaleDateString()}
               </div>
+            </div>
           ))}
         </div>
       </div>
