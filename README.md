@@ -1,9 +1,8 @@
 # Getting Started with Evento app
 `npm install && npm build && npm dev`
 
-# Known issues
+## Known issues
     a) There is no queueing mechanizm on backend implemented yet
-        https://vercel.com/guides/do-vercel-serverless-functions-support-websocket-connections
     b) Missing loading spinner (especially when new event is added)
     c) Temperature is not related to the event time just location
     d) CSS is very poor as I spent a lot time working on BE
@@ -16,8 +15,8 @@
      2) Memoize EventList
      3) Explore weahter API to get forecast by location and time, possibly we can get the whole forecast and find the right value () for each event
 
- ## Nice to have
-     1) Websocket communication instead of "Heart beat" pooling then move to Heroku cloud.
+## Nice to have
+     1) Websocket communication instead of "Heart beat" pooling then move to Heroku cloud as there [is now way to run weebsockets in Vercel cloud](https://vercel.com/guides/do-vercel-serverless-functions-support-websocket-connections)
 
 ## Available Scripts
 
