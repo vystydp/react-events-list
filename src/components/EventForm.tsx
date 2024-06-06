@@ -24,65 +24,60 @@ const EventForm = ({ onEventCreated }: { onEventCreated: () => void }) => {
   return (
     <div className='container mb-3.5'>
       <h2 className="text-2xl font-bold  mb-2.5">New event</h2>
-      <form onSubmit={handleSubmit} className="space-y-2">
-        <div>
-          <label htmlFor="title" className="block text-sm font-medium">Title</label>
-          <input
-            id="title"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="date" className="block text-sm font-medium">Date</label>
-          <input
-            id="date"
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="lat" className="block text-sm font-medium">Latitude</label>
-          <input
-            id="lat"
-            type="number"
-            value={lat}
-            onChange={(e) => setLat(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="long" className="block text-sm font-medium">Longitude</label>
-          <input
-            id="long"
-            type="number"
-            value={long}
-            onChange={(e) => setLong(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="desc"className="block text-sm font-medium">Description</label>
-          <textarea
-            id="desc"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-            required
-          ></textarea>
-        </div>
-        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md">
-          Create Event
-        </button>
-      </form>
+      <form onSubmit={handleSubmit} className="bg-white shadow rounded-lg p-6 space-y-4">
+      <div>
+        <label className="block text-sm font-medium mb-1">Title</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+          required
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium mb-1">Date</label>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+          required
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium mb-1">Latitude</label>
+        <input
+          type="number"
+          value={lat}
+          onChange={(e) => setLat(e.target.value)}
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+          required
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium mb-1">Longitude</label>
+        <input
+          type="number"
+          value={long}
+          onChange={(e) => setLong(e.target.value)}
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+          required
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium mb-1">Description</label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded-md shadow-sm hover:bg-indigo-700 transition">
+        Create Event
+      </button>
+    </form>
     </div>
   );
 };

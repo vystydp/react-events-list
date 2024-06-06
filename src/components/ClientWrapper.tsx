@@ -14,19 +14,19 @@ const ClientWrapper = ({ initialEvents }: { initialEvents: Event[] }) => {
         <header className="App-header">
         </header>
         <div className="container mx-auto p-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="col-span-1 md:col-span-2">
-            <EventList initialEvents={initialEvents} onSelectEvent={setSelectedEvent} />
-            </div>
-            <div className="col-span-1">
-            <EventForm onEventCreated={() => setSelectedEvent(null)} />
-            </div>
-        </div>
-        {selectedEvent && (
-            <div className="mt-4">
-            <EventDetails event={selectedEvent} />
-            </div>
-        )}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="col-span-1 md:col-span-2">
+              <EventList initialEvents={initialEvents} onSelectEvent={setSelectedEvent} />
+                {selectedEvent && (
+                <div className="mt-4">
+                <EventDetails event={selectedEvent} />
+                </div>
+                )}
+              </div>
+              <div className="col-span-1">
+              <EventForm onEventCreated={() => setSelectedEvent(null)} />
+              </div>
+          </div>
         </div>
   </div>
   );
