@@ -11,7 +11,7 @@ const ClientWrapper = ({ initialEvents }: { initialEvents: Event[] }) => {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header text-left">
         Evento - We bring events to life ❤
       </header>
       <div className="container mx-auto p-4">
