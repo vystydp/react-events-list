@@ -7,6 +7,7 @@ export default function Page() {
   let initialEvents: Event[] = [];
   
   return (
+    //@TODO employ server side rendering for already stored events
     <ClientWrapper initialEvents={initialEvents} />
   );
 }
