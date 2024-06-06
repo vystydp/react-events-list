@@ -19,16 +19,20 @@ const EventList = ({ initialEvents, onSelectEvent }: { initialEvents: Event[], o
   }, []);
 
   return (
-    <div className='container'>
-      <h2 className="text-2xl font-bold mb-3.5">Events</h2>
-        {Array.isArray(events) && events.map(event => (
-          <div className={'box-border h-42 w-42 p-4 border-1 shadow-lg' + (new Date(event.date).getTime() < new Date().getTime() ? ' previous' : ' upcomming')}
-               key={event.id} >
-            <div onClick={() => onSelectEvent(event)} className="cursor-pointer">
-              {event.title} - {new Date(event.date).toLocaleDateString()}
-            </div>
-          </div>
+    <div className="bg-white shadow rounded-lg p-4">
+      <h2 className="text-2xl font-bold mb-4">Events</h2>
+      <ul className="space-y-4">
+        {events.map(event => (
+          <li
+            key={event.id}
+            onClick={() => onSelectEvent(event)}
+            className="p-4 rounded-lg cursor-pointer hover:bg-gray-100 transition"
+          >
+            <div className="text-xl font-semibold">{event.title}</div>
+            <div className="text-gray-500">{new Date(event.date).toLocaleDateString()}</div>
+          </li>
         ))}
+      </ul>
     </div>
   );
 };
