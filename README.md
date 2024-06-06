@@ -12,13 +12,12 @@
     g) EventList component should have some kind of memoization (useMemo) even if it's not so expensive looping
 
 ## Todo
-     1) Memoize
-     2) Remove pooling + Add websocket and move to Heroku cloud
-     3) CSS Polishing
-     4) Explore weahter API to get forecast by location and time, possibly we can get the whole forecast and find the right value for each event
+     1) CSS Polishing
+     2) Memoize EventList
+     3) Explore weahter API to get forecast by location and time, possibly we can get the whole forecast and find the right value () for each event
 
  ## Nice to have
-     1) Websocket communication instead of "Heart beat" pooling.
+     1) Websocket communication instead of "Heart beat" pooling then move to Heroku cloud.
 
 ## Available Scripts
 
