@@ -5,7 +5,7 @@ let events: Event[] = [{
   id: "1", 
   title: "title", 
   date: "2024-06-06T14:05:00+02:00", 
-  description: "Interview" ,
+  description: "desc" ,
   location: {
     long: 10,
     lat: 10
